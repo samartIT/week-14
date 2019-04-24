@@ -6,16 +6,12 @@ public class WeatherController : MonoBehaviour
 {
     [SerializeField] private Material sky;
     [SerializeField] private Light sun;
-    // Start is called before the first frame update
     private float _fullIntensity;
     private float _cloudValue = 0f;
-
     void Start()
     {
         _fullIntensity = sun.intensity;
     }
-
-    // Update is called once per frame
     private void Update()
     {
         SetOvercast(_cloudValue);

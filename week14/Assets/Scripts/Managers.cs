@@ -2,25 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerManager))]
-[RequireComponent(typeof(InventoryManager))]
+//[RequireComponent(typeof(PlayerManager))]
+//[RequireComponent(typeof(InventoryManager))]
 
 public class Managers : MonoBehaviour
 {
-    public static PlayerManager Player { get; private set; }
-    public static InventoryManager Inventory { get; private set; }
+    //public static PlayerManager Player { get; private set; }
+    //public static InventoryManager Inventory { get; private set; }
 
 
     private List<IGameManager> _startSequence;
 
     private void Awake()
     {
-        Player = GetComponent<PlayerManager>();
-        Inventory = GetComponent<InventoryManager>();
+        //Player = GetComponent<PlayerManager>();
+        //Inventory = GetComponent<InventoryManager>();
 
         _startSequence = new List<IGameManager>();
-        _startSequence.Add(Player);
-        _startSequence.Add(Inventory);
+       // _startSequence.Add(Player);
+       // _startSequence.Add(Inventory);
 
         StartCoroutine(StartupManagers());
     }
