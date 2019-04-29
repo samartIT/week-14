@@ -4,7 +4,8 @@ using UnityEngine;
 
 //[RequireComponent(typeof(PlayerManager))]
 //[RequireComponent(typeof(InventoryManager))]
-[RequireComponent(typeof(WeatherManager))] 
+[RequireComponent(typeof(WeatherManager))]
+[RequireComponent(typeof(AudioManager))]
 
 public class Managers : MonoBehaviour
 {
@@ -16,18 +17,26 @@ public class Managers : MonoBehaviour
         private set;
     }
 
+    public static AudioManager Audio
+    {
+        get;
+        private set;
+    }
+
     private List<IGameManager> _startSequence;
 
-    private void Awake()
+    void Awake()
     {
         //Player = GetComponent<PlayerManager>();
         //Inventory = GetComponent<InventoryManager>();
         Weather = GetComponent<WeatherManager>();
+        Audio = GetComponent<AudioManager>();
 
         _startSequence = new List<IGameManager>();
         //_startSequence.Add(Player);
         //_startSequence.Add(Inventory);
         _startSequence.Add (Weather);
+        _startSequence.Add(Audio);
 
         StartCoroutine (StartupManagers());
     }
