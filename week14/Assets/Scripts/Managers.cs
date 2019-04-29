@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerManager))]
+/*[RequireComponent(typeof(PlayerManager))]
 [RequireComponent(typeof(InventoryManager))]
 
 public class Managers : MonoBehaviour
@@ -56,3 +56,4 @@ public class Managers : MonoBehaviour
         Debug.Log("All managers started");
     }
 }
+*/
