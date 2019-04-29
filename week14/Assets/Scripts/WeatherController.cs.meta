@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 8d7e07bab8c3dae41840ae543fdf789a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sky: {fileID: 2100000, guid: 492f8600f1a7cbd46b1ffb37d9608583, type: 2}
+  - sun: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
