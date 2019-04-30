@@ -5,13 +5,13 @@ using UnityEngine;
 //[RequireComponent(typeof(PlayerManager))]
 //[RequireComponent(typeof(InventoryManager))]
 [RequireComponent(typeof(WeatherManager))]
-
+[RequireComponent(typeof(AudioManager))]
 public class Managers : MonoBehaviour
 {
     //public static PlayerManager Player { get; private set; }
     //public static InventoryManager Inventory { get; private set; }
     public static WeatherManager Weather { get; private set; }
-
+    public static AudioManager Audio { get; private set; }
     private List<IGameManager> _startSequence;
 
     private void Awake()
@@ -19,11 +19,13 @@ public class Managers : MonoBehaviour
         //Player = GetComponent<PlayerManager>();
         //Inventory = GetComponent<InventoryManager>();
         Weather = GetComponent<WeatherManager>();
+        Audio = GetComponent<AudioManager>();
 
         _startSequence = new List<IGameManager>();
         //_startSequence.Add(Player);
         //_startSequence.Add(Inventory);
         _startSequence.Add(Weather);
+        _startSequence.Add(Audio);
 
         StartCoroutine(StartupManagers());
     }
