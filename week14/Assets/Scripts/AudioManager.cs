@@ -50,11 +50,49 @@ public class AudioManager : MonoBehaviour, IGameManager
         set { AudioListener.pause = value; }
     }
 
+    private float _musicVolume;
+    public float musicVolume
+    {
+        get { return _musicVolume; }
+        set
+        {
+            _musicVolume = value;
+            if (music1Src != null)
+            {
+                music1Src.volume = _musicVolume;
+            }
+        }
+    }
+
+    public bool musicMute
+    {
+        get
+        {
+            if (music1Src != null)
+            {
+                return music1Src.mute;
+            }
+            return false;
+        }
+        set
+        {
+            if (music1Src != null)
+            {
+                music1Src.mute = value;
+            }
+        }
+    }
+
     public void Startup(NetworkService service)
     {
         Debug.Log("Audio Managet starting ...");
         _network = service;
+        music1Src.ignoreListenerVolume = true;
+        music1Src.ignoreListenerPause = true;
+
         soundVolumn = 1f;
+        musicVolume = 1f;
+
         status = ManagerStatus.Started;
     }
 }
