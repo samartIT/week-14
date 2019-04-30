@@ -18,9 +18,19 @@ public class WeatherManager : MonoBehaviour , IGameManager
         status = ManagerStatus.Initializing;
     }
 
+public float cloudValue { get; private set; }
+
     public void OnXMLDataLoaded(string data)
     {
-        Debug.Log(data);
+        XmlDocument doc = new XmlDocument();
+        doc.LoadXml(data);
+        XmlNode root = doc.DocumentElement;
+        XmlNode node = root.SelectSingleNode("clouds");
+        string value = node.Attributes["value"].Value;
+        cloudValue = Convert.ToInt32(value) / 100f;
+        Debug.Log("Value =" + cloudValue);
+        Messenger.Broadcast(GameEvent.WEARTHER_UPDATED);
+
         status = ManagerStatus.Started;
     }
 }
