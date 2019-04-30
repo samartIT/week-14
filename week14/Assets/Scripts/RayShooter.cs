@@ -3,6 +3,10 @@ using System.Collections;
 
 public class RayShooter : MonoBehaviour {
 	private Camera _camera;
+    [SerializeField] private AudioSource soundScr;
+    [SerializeField] private AudioClip hitWall;
+    [SerializeField] private AudioClip hitEnemy;
+
 	void Start() {
 		_camera = GetComponent<Camera>();
 
@@ -27,8 +31,10 @@ public class RayShooter : MonoBehaviour {
 				ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
 				if (target != null) {
 					target.ReactToHit();
+                    soundScr.PlayOneShot(hitEnemy);
 				} else {
 					StartCoroutine(SphereIndicator(hit.point));
+                    soundScr.PlayOneShot(hitWall);
 				}
 			}
 		}
