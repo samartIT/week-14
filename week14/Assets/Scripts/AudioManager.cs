@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] private AudioSource soundSrc;
+    public void PlaySound(AudioClip clip)
+    {
+        soundSrc.PlayOneShot(clip);
+    }
     public ManagerStatus status { get; private set; }
     private NetworkService _network;
 
