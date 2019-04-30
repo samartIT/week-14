@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(PlayerManager))]
-//[RequireComponent(typeof(InventoryManager))]
+
+[RequireComponent(typeof(AudioManager))]
 [RequireComponent(typeof(WeatherManager))]
 public class Managers : MonoBehaviour
 {
-    //public static PlayerManager Player { get; private set; }
-    //public static InventoryManager Inventory { get; private set; }
+    public static AudioManager Audio { get; private set; }
     public static WeatherManager Weather { get; private set; }
 
 
@@ -16,13 +15,11 @@ public class Managers : MonoBehaviour
 
     void Awake()
     {
-        // Player = GetComponent<PlayerManager>();
-        //Inventory = GetComponent<InventoryManager>();
+        Audio = GetComponent<AudioManager>();
         Weather = GetComponent<WeatherManager>();
 
         _startSequence = new List<IGameManager>();
-        //  _startSequence.Add(Player);
-        //_startSequence.Add(Inventory);
+        _startSequence.Add(Audio);
         _startSequence.Add (Weather);
 
         StartCoroutine(StartupManagers());
