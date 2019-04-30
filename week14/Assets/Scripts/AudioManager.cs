@@ -73,10 +73,20 @@ public class AudioManager : MonoBehaviour
     {
         _crossFading = true;
         _inactiveMusic.clip = clip;
-        _inactiveMusic.volume = 0
+        _inactiveMusic.volume = 0;
         _inactiveMusic.Play();
-    }
 
+        float ScaleRate = crossFadingRate * _musicVolume;
+        while (_activeMusic.volume > 0)
+        {
+            _activeMusic.volume -= ScaleRate * Time.deltaTime;
+            _inactiveMusic.volume += ScaleRate * Time.deltaTime;
+
+            _inactiveMusic = tmp;
+            _inactiveMusic.Stop();
+            _crossFading = false;
+        }
+    }
 
     public void PlaySound(AudioClip clip)
     {
