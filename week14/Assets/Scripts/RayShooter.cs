@@ -3,7 +3,11 @@ using System.Collections;
 
 public class RayShooter : MonoBehaviour {
 	private Camera _camera;
-	void Start() {
+    [SerializeField] private AudioSource soundSrc;
+    [SerializeField] private AudioClip hitwall;
+    [SerializeField] private AudioClip hitEnemy;
+
+    void Start() {
 		_camera = GetComponent<Camera>();
 
 		Cursor.lockState = CursorLockMode.Locked;
@@ -27,8 +31,10 @@ public class RayShooter : MonoBehaviour {
 				ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
 				if (target != null) {
 					target.ReactToHit();
+                    soundSrc.PlayOneShot(hitEnemy);
 				} else {
 					StartCoroutine(SphereIndicator(hit.point));
+                    soundSrc.PlayOneShot(hitWall);
 				}
 			}
 		}
@@ -42,4 +48,6 @@ public class RayShooter : MonoBehaviour {
 
 		Destroy(sphere);
 	}
+
+
 }
